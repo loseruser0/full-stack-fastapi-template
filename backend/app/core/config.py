@@ -66,7 +66,7 @@ class Settings(BaseSettings):
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_SERVER,
             port=self.POSTGRES_PORT,
-            path=self.POSTGRES_DB,
+            path=self.POSTES_DB,
         )
 
     SMTP_TLS: bool = True
@@ -94,6 +94,11 @@ class Settings(BaseSettings):
     EMAIL_TEST_USER: EmailStr = "test@example.com"
     FIRST_SUPERUSER: EmailStr
     FIRST_SUPERUSER_PASSWORD: str
+
+    # Qdrant settings
+    QDRANT_HOST: str = "localhost"
+    QDRANT_PORT: int = 6333 # Default gRPC port
+    QDRANT_API_KEY: str | None = None # Optional API key
 
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
